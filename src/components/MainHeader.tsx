@@ -29,11 +29,11 @@ export default function MainHeader() {
         </Link>
 
         <Link
-          href="/explore"
-          className={`navLink ${isActive("/explore") ? "active" : ""}`}
-          aria-current={isActive("/explore") ? "page" : undefined}
+          href="/posts"
+          className={`navLink ${isActive("/posts") ? "active" : ""}`}
+          aria-current={isActive("/posts") ? "page" : undefined}
         >
-          Explore
+          Posts
         </Link>
 
         <Link

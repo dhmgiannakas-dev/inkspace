@@ -68,7 +68,7 @@ export default function AboutPage() {
         </p>
 
         <Link href="/explore" className="aboutButton">
-          Explore stories
+          Explore Posts
         </Link>
       </section>
     </main>

@@ -35,7 +35,7 @@ export default async function MainFooter() {
                         <h2 className="footerHeading">Explore</h2>
 
                         <Link href="/">Home</Link>
-                        <Link href="/explore">Explore stories</Link>
+                        <Link href="/posts">Posts</Link>
                         <Link href="/about">About us</Link>
                     </nav>
 

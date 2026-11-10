@@ -17,7 +17,7 @@ export default async function HomePage() {
         <span className="eyebrow">A space for ideas and stories</span>
 
         <h1 className="heroTitle">
-          Stories worth <span>sharing.</span>
+          Posts worth <span>sharing.</span>
         </h1>
 
         <p className="heroDescription">
@@ -26,7 +26,7 @@ export default async function HomePage() {
         </p>
 
         <a href="#latest-posts" className="exploreButton">
-          Explore stories
+          Explore Posts
         </a>
       </section>
 
@@ -34,7 +34,7 @@ export default async function HomePage() {
         <div className="sectionHeading">
           <div>
             <span className="eyebrow">Editor's pick</span>
-            <h2>Featured story</h2>
+            <h2>Featured Post</h2>
           </div>
         </div>
 
@@ -82,7 +82,7 @@ export default async function HomePage() {
         <div className="sectionHeading">
           <div>
             <span className="eyebrow">Fresh perspectives</span>
-            <h2>Latest stories</h2>
+            <h2>Latest Posts</h2>
           </div>
         </div>
 
