@@ -9,9 +9,9 @@ import "./page.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Explore Posts | INKSPACE",
-  description:
-    "Discover the latest posts in technology, science, and culture on INKSPACE.",
+    title: "Explore Posts | INKSPACE",
+    description:
+        "Discover the latest posts in technology, science, and culture on INKSPACE.",
 };
 
 interface PostsPageProps {
@@ -32,7 +32,10 @@ export default async function PostsPage({
     const search = params.search ?? "";
     const page = Math.max(1, Number(params.page) || 1);
 
-    const articles = await getArticles({ search, page });
+    const { articles, currentPage, totalPages } = await getArticles({
+        search,
+        page,
+    });
 
     const categories = [
         { label: "All posts", href: "/posts" },
@@ -74,7 +77,9 @@ export default async function PostsPage({
 
                 <div className="postsHeading">
                     <h2>{search ? `Results for "${search}"` : "Latest Posts"}</h2>
-                    <span>Page {page}</span>
+                    <span>
+                        Page {currentPage} of {totalPages}
+                    </span>
                 </div>
 
                 {articles.length > 0 ? (
@@ -132,22 +137,22 @@ export default async function PostsPage({
                 )}
 
                 <div className="postsPagination">
-                    {page > 1 && (
+                    {currentPage > 1 && (
                         <Link
                             href={`/posts?${new URLSearchParams({
                                 search,
-                                page: String(page - 1),
+                                page: String(currentPage - 1),
                             })}`}
                         >
                             Previous
                         </Link>
                     )}
 
-                    {articles.length === 10 && (
+                    {currentPage < totalPages && (
                         <Link
                             href={`/posts?${new URLSearchParams({
                                 search,
-                                page: String(page + 1),
+                                page: String(currentPage + 1),
                             })}`}
                         >
                             Next
