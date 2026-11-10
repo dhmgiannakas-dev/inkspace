@@ -68,7 +68,11 @@ async function CategoryContent({
   const search = query.search ?? "";
   const page = Math.max(1, Math.floor(Number(query.page) || 1));
 
-  const articles = await getArticles({ category, search, page });
+  const { articles, currentPage, totalPages } = await getArticles({
+    category,
+    search,
+    page,
+  });
 
   const createPageUrl = (pageNumber: number) => {
     const params = new URLSearchParams();
@@ -120,7 +124,9 @@ async function CategoryContent({
               ? `Results for "${search}"`
               : `Latest ${activeCategory.label.toLowerCase()} posts`}
           </h2>
-          <span>Page {page}</span>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
         </div>
 
         {articles.length > 0 ? (
@@ -174,12 +180,16 @@ async function CategoryContent({
         )}
 
         <div className="postsPagination">
-          {page > 1 && (
-            <Link href={createPageUrl(page - 1)}>Previous</Link>
+          {currentPage > 1 && (
+            <Link href={createPageUrl(currentPage - 1)}>
+              Previous
+            </Link>
           )}
 
-          {articles.length === 10 && (
-            <Link href={createPageUrl(page + 1)}>Next</Link>
+          {currentPage < totalPages && (
+            <Link href={createPageUrl(currentPage + 1)}>
+              Next
+            </Link>
           )}
         </div>
       </section>

@@ -45,6 +45,7 @@ export async function getLatestArticles(): Promise<Article[]> {
 /**
  * Fetches paginated Guardian articles with optional search and category.
  */
+
 export async function getArticles({
   search = "",
   category = "",
@@ -53,9 +54,12 @@ export async function getArticles({
   search?: string;
   category?: string;
   page?: number;
-}): Promise<Article[]> {
+}): Promise<{
+  articles: Article[];
+  currentPage: number;
+  totalPages: number;
+}> {
   "use cache";
-
   cacheLife("hours");
 
   const apiKey = process.env.GUARDIAN_API_KEY;
@@ -69,6 +73,7 @@ export async function getArticles({
     "show-fields": "thumbnail,trailText,byline",
     "page-size": "10",
     "order-by": "newest",
+    page: String(page),
   });
 
   if (search) {
@@ -79,12 +84,8 @@ export async function getArticles({
     params.set("section", category);
   }
 
-  if (page) {
-    params.set("page", String(page));
-  }
-
   const response = await fetch(
-    `https://content.guardianapis.com/search?${params}`
+    `https://content.guardianapis.com/search?${params.toString()}`
   );
 
   if (!response.ok) {
@@ -94,10 +95,16 @@ export async function getArticles({
   const data: {
     response: {
       results: Article[];
+      currentPage: number;
+      pages: number;
     };
   } = await response.json();
 
-  return data.response.results;
+  return {
+    articles: data.response.results,
+    currentPage: data.response.currentPage,
+    totalPages: data.response.pages,
+  };
 }
 
 /**
