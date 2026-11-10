@@ -1,49 +1,54 @@
+/**
+ * Global styles for INKSPACE.
+ * Defines theme variables, typography and base resets.
+ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --background: #faf9f6;
+  --foreground: #242520;
+  --accent: #a47752;
+  --muted: #77776f;
+  --border: #eae8e2;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background-color: #e9d6c5;
+  color: var(--foreground);
 }

@@ -1,15 +1,19 @@
-.main-header {
-  width: 100%;
-  min-height: 80px;
-  padding: 0 6%;
+/**
+ * MainHeader styles.
+ * Includes navigation, active links and responsive layout.
+ */
+
+.mainHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 80px;
+  padding: 0 6%;
   background-color: #faf9f6;
   border-bottom: 1px solid #eae8e2;
 }
 
-.main-header__logo {
+.logo {
   color: #242520;
   font-size: 1.4rem;
   font-weight: 700;
@@ -17,32 +21,46 @@
   text-decoration: none;
 }
 
-.main-header__nav {
+.navigation {
   display: flex;
   align-items: center;
   gap: 32px;
 }
 
-.main-header__nav link,
-.main-header__login {
+.navLink {
   color: #55564f;
   font-size: 0.95rem;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.main-header__nav a:hover,
-.main-header__login:hover {
+.navLink:hover {
   color: #a47752;
 }
 
-.main-header__actions {
+.navLink.active {
+  color: #242520;
+  font-weight: 600;
+}
+
+.headerActions {
   display: flex;
   align-items: center;
   gap: 24px;
 }
 
-.main-header__signup {
+.loginLink {
+  color: #55564f;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3 ease;
+}
+
+.loginLink:hover {
+  color: #a47752;
+}
+
+.signupButton {
   padding: 11px 20px;
   color: #fff;
   background-color: #242520;
@@ -52,21 +70,16 @@
   transition: background-color 0.2s ease;
 }
 
-.main-header__signup:hover {
+.signupButton:hover {
   background-color: #a47752;
 }
 
 @media (max-width: 640px) {
-  .main-header {
+  .mainHeader {
     padding: 0 5%;
   }
 
-  .main-header__nav {
+  .navigation {
     display: none;
   }
-}
-
-.main-header__nav--active {
-  color: #a47752;
-  font-weight: 700;
 }

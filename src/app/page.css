@@ -1,0 +1,253 @@
+/**
+ * Home page styles.
+ * Hero, featured article and responsive article cards.
+ */
+
+.homePage {
+  min-height: 100vh;
+  background: #faf9f6;
+  color: #242520;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 112px 24px 120px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #a47752;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  margin: 24px 0;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -3px;
+}
+
+.heroTitle span {
+  color: #a47752;
+}
+
+.heroDescription {
+  max-width: 580px;
+  margin: 0 auto;
+  color: #77776f;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.exploreButton {
+  display: inline-block;
+  margin-top: 36px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  background: #242520;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.exploreButton:hover {
+  background: #a47752;
+}
+
+.featuredSection,
+.latestSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.sectionHeading {
+  margin-bottom: 32px;
+}
+
+.sectionHeading h2 {
+  margin-top: 12px;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.featuredPost {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  min-height: 400px;
+  overflow: hidden;
+  border: 1px solid #eae8e2;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.featuredImage {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+  background: #e9e3da;
+}
+
+.featuredImage img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.featuredPost:hover .featuredImage img {
+  transform: scale(1.04);
+}
+
+.featuredContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px;
+}
+
+.postCategory {
+  color: #a47752;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.featuredContent h3 {
+  margin: 20px 0;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.featuredContent p {
+  margin-bottom: 24px;
+  color: #77776f;
+  line-height: 1.8;
+}
+
+.featuredContent a {
+  align-self: flex-start;
+  color: #242520;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #a47752;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.postCard {
+  overflow: hidden;
+  border: 1px solid #eae8e2;
+  border-radius: 12px;
+  background: #fff;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.postCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 6%);
+}
+
+.postImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e9e3da;
+}
+
+.postImage img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.postCard:hover .postImage img {
+  transform: scale(1.05);
+}
+
+.postContent {
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  padding: 24px;
+}
+
+.postContent h3 {
+  margin: 12px 0;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.postContent p {
+  color: #77776f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 24px;
+  font-size: 12px;
+  color: #77776f;
+}
+
+.postFooter a {
+  flex-shrink: 0;
+  color: #a47752;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .postsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 24px;
+  }
+
+  .heroTitle {
+    letter-spacing: -1px;
+  }
+
+  .featuredPost {
+    grid-template-columns: 1fr;
+  }
+
+  .featuredImage {
+    min-height: 280px;
+  }
+
+  .featuredContent {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .postsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeading h2 {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,116 @@
+/**
+ * MainFooter styles.
+ * Brand, navigation and responsive footer layout.
+ */
+
+.mainFooter {
+  background-color: #242520;
+  color: #faf9f6;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 24px 24px;
+}
+
+.footerTop {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 64px;
+}
+
+.footerBrand {
+  max-width: 320px;
+}
+
+.footerLogo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.footerDescription {
+  margin-top: 20px;
+  color: #b8b8b2;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footerNavigation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.footerHeading {
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.footerNavigation a {
+  color: #b8b8b2;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerNavigation a:hover {
+  color: #c69b76;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid #44453f;
+}
+
+.footerBottom p {
+  color: #a8a8a2;
+  font-size: 13px;
+}
+
+.footerBottom a {
+  color: #c69b76;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .footerTop {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footerBrand {
+    grid-column: 1 / -1;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerContainer {
+    padding-top: 56px;
+  }
+
+  .footerTop {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footerBrand {
+    grid-column: auto;
+  }
+}

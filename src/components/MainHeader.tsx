@@ -4,44 +4,53 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./MainHeader.css";
 
+/**
+ * Main navigation header with active route highlighting.
+ */
 export default function MainHeader() {
   const pathname = usePathname();
 
+  const isActive = (path: string) =>
+    path === "/" ? pathname === "/" : pathname.startsWith(path);
+
   return (
-    <header className="main-header">
-      <Link href="/" className="main-header__logo">
+    <header className="mainHeader">
+      <Link href="/" className="logo">
         INKSPACE
       </Link>
 
-      <nav className="main-header__nav">
+      <nav className="navigation" aria-label="Main navigation">
         <Link
           href="/"
-          className={pathname === "/" ? "main-header__nav--active" : ""}
+          className={`navLink ${isActive("/") ? "active" : ""}`}
+          aria-current={isActive("/") ? "page" : undefined}
         >
           Home
         </Link>
 
         <Link
           href="/explore"
-          className={pathname === "/explore" ? "main-header__nav--active" : ""}
+          className={`navLink ${isActive("/explore") ? "active" : ""}`}
+          aria-current={isActive("/explore") ? "page" : undefined}
         >
           Explore
         </Link>
 
         <Link
           href="/about"
-          className={pathname === "/about" ? "main-header__nav--active" : ""}
+          className={`navLink ${isActive("/about") ? "active" : ""}`}
+          aria-current={isActive("/about") ? "page" : undefined}
         >
           About
         </Link>
       </nav>
 
-      <div className="main-header__actions">
-        <Link href="/login" className="main-header__login">
+      <div className="headerActions">
+        <Link href="/login" className="loginLink">
           Log in
         </Link>
 
-        <Link href="/register" className="main-header__signup">
+        <Link href="/register" className="signupButton">
           Get started
         </Link>
       </div>
