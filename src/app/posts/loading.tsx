@@ -5,7 +5,7 @@ export default function PostsLoading() {
     <main className="postsPage">
       <section className="postsHero">
         <span className="postsEyebrow">EXPLORE INKSPACE</span>
-        <h1>Discover stories.</h1>
+        <h1>Discover Posts.</h1>
         <p>
           Explore ideas, discoveries and perspectives from around the world.
         </p>

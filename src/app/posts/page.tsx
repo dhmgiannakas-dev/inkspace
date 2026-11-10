@@ -9,9 +9,9 @@ import "./page.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Explore Stories | INKSPACE",
+  title: "Explore Posts | INKSPACE",
   description:
-    "Discover the latest stories in technology, science, and culture on INKSPACE.",
+    "Discover the latest posts in technology, science, and culture on INKSPACE.",
 };
 
 interface PostsPageProps {
