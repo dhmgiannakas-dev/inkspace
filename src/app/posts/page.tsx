@@ -113,11 +113,7 @@ export default async function PostsPage({
                                             }).format(new Date(article.webPublicationDate))}
                                         </span>
 
-                                        <Link
-                                            href={article.webUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                        <Link href={`/posts/article/${article.id}`}>
                                             Read article
                                         </Link>
                                     </div>

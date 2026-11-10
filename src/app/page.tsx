@@ -66,11 +66,7 @@ export default async function HomePage() {
                 )}
               </p>
 
-              <Link
-                href={featuredArticle.webUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={`/posts/article/${featuredArticle.id}`}>
                 Read article
               </Link>
             </div>
@@ -116,12 +112,8 @@ export default async function HomePage() {
                     {article.fields?.byline ?? "The Guardian"}
                   </span>
 
-                  <Link
-                    href={article.webUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read more
+                  <Link href={`/posts/article/${article.id}`}>
+                    Read article
                   </Link>
                 </div>
               </div>

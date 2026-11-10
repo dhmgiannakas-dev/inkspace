@@ -99,3 +99,44 @@ export async function getArticles({
 
   return data.response.results;
 }
+
+/**
+ * Fetches a single Guardian article by its ID.
+ */
+export async function getArticleById(
+  id: string
+): Promise<Article | null> {
+  "use cache";
+  cacheLife("hours");
+
+  const apiKey = process.env.GUARDIAN_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("GUARDIAN_API_KEY is missing");
+  }
+
+  const params = new URLSearchParams({
+    "api-key": apiKey,
+    "show-fields": "thumbnail,trailText,byline",
+  });
+
+  const response = await fetch(
+    `https://content.guardianapis.com/${id}?${params.toString()}`
+  );
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    throw new Error(`Guardian API error: ${response.status}`);
+  }
+
+  const data: {
+    response: {
+      content: Article;
+    };
+  } = await response.json();
+
+  return data.response.content;
+}
