@@ -6,6 +6,27 @@ import { getArticles } from "@/lib/articles";
 import PostsSearch from "@/components/PostsSearch";
 import "../page.css";
 
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: CategoryPageProps): Promise<Metadata> {
+  const { category } = await params;
+
+  const titles: Record<string, string> = {
+    technology: "Technology",
+    science: "Science",
+    culture: "Culture",
+  };
+
+  const title = titles[category] ?? "Stories";
+
+  return {
+    title: `${title} Stories | INKSPACE`,
+    description: `Explore the latest ${title.toLowerCase()} stories, news, and perspectives on INKSPACE.`,
+  };
+}
+
 /**
  * Displays Guardian articles filtered by category.
  */

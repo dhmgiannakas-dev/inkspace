@@ -11,10 +11,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Inkspace — Write. Share. Inspire.",
-    template: "%s | Inkspace",
-  },
+  title: "INKSPACE — Write. Share. Inspire.",
   description:
     "Discover thoughtful stories, share your perspective and connect with a community of writers.",
 };

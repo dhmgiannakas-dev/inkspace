@@ -1,6 +1,14 @@
 import Link from "next/link";
 import "./page.css";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | INKSPACE",
+  description:
+    "Learn more about INKSPACE, an editorial space dedicated to ideas, stories, and perspectives that inspire curiosity.",
+};
+
 
 export default function AboutPage() {
   return (

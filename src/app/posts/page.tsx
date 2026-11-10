@@ -6,6 +6,14 @@ import { Suspense } from "react";
 
 import "./page.css";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Explore Stories | INKSPACE",
+  description:
+    "Discover the latest stories in technology, science, and culture on INKSPACE.",
+};
+
 interface PostsPageProps {
     searchParams: Promise<{
         search?: string;
