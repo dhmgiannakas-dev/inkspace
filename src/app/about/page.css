@@ -1,0 +1,146 @@
+/**
+ * About page styles.
+ * Editorial layout with responsive content sections.
+ */
+
+.aboutPage {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.aboutHero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 120px 24px 110px;
+  text-align: center;
+}
+
+.aboutEyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.aboutTitle {
+  margin: 24px 0;
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -3px;
+}
+
+.aboutTitle span {
+  color: var(--accent);
+}
+
+.aboutIntroduction {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.aboutContent {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+.aboutSection {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+}
+
+.aboutSectionNumber {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.aboutSectionBody {
+  max-width: 650px;
+}
+
+.aboutSectionBody h2 {
+  margin: 0 0 28px;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.aboutSectionBody p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.aboutCallToAction {
+  padding: 100px 24px;
+  background-color: #f0ece6;
+  text-align: center;
+}
+
+.aboutCallToAction h2 {
+  margin: 20px 0;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.aboutCallToAction p {
+  max-width: 480px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.aboutButton {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  background-color: var(--foreground);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.aboutButton:hover {
+  background-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .aboutHero {
+    padding: 80px 24px;
+  }
+
+  .aboutTitle {
+    letter-spacing: -1px;
+  }
+
+  .aboutSection {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 48px 0;
+  }
+
+  .aboutContent {
+    padding-bottom: 70px;
+  }
+
+  .aboutCallToAction {
+    padding: 80px 24px;
+  }
+}
