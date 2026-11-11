@@ -1,0 +1,142 @@
+/* Registration page layout and form styles. */
+
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 80px 24px;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 440px;
+}
+
+.register-heading {
+  margin-bottom: 40px;
+}
+
+.register-eyebrow {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.register-heading h1 {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+.register-heading p {
+  color: #777;
+  line-height: 1.7;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-field label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.register-field input {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.register-field input:focus {
+  border-color: #111;
+}
+
+.register-field input::placeholder {
+  color: #aaa;
+}
+
+.register-hint {
+  font-size: 12px;
+  color: #888;
+}
+
+.register-submit {
+  margin-top: 8px;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  background: #111;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.register-submit:hover {
+  background: #333;
+}
+
+.register-login {
+  margin-top: 32px;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+.register-login a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .register-page {
+    padding: 60px 20px;
+  }
+}
+
+.register-error {
+  color: #b42318;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.register-success {
+  color: #217a43;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.register-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.register-success a {
+  display: inline-block;
+  margin-top: 12px;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+}
