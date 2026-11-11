@@ -75,7 +75,7 @@ export default function AboutPage() {
           Discover stories that challenge your thinking and spark new ideas.
         </p>
 
-        <Link href="/explore" className="aboutButton">
+        <Link href="/posts" className="aboutButton">
           Explore Posts
         </Link>
       </section>
