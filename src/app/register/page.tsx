@@ -1,21 +1,47 @@
 "use client";
 
-import { useActionState } from "react";
+import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import { registerAction, type RegisterState } from "./actions";
+import { authClient } from "@/lib/auth-client";
 import "./register.css";
 
-const initialState: RegisterState = {
-  success: false,
-  message: "",
-};
-
-/** Renders registration form with server-side validation feedback. */
+/** Renders the registration form using Better Auth. */
 export default function RegisterPage() {
-  const [state, formAction, isPending] = useActionState(
-    registerAction,
-    initialState,
-  );
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setError("");
+    setIsPending(true);
+
+    const formData = new FormData(event.currentTarget);
+
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const password = String(formData.get("password") ?? "");
+
+    try {
+      const result = await authClient.signUp.email({
+        name,
+        email,
+        password,
+      });
+
+      if (result.error) {
+        setError(result.error.message ?? "Registration failed.");
+        return;
+      }
+
+      setSuccess(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsPending(false);
+    }
+  }
 
   return (
     <main className="register-page">
@@ -26,13 +52,13 @@ export default function RegisterPage() {
           <p>Join our community and start exploring stories that inspire.</p>
         </div>
 
-        {state.success ? (
+        {success ? (
           <div className="register-success" role="status">
-            <p>{state.message}</p>
+            <p>Your account has been created successfully!</p>
             <Link href="/login">Continue to sign in</Link>
           </div>
         ) : (
-          <form className="register-form" action={formAction}>
+          <form className="register-form" onSubmit={handleSubmit}>
             <div className="register-field">
               <label htmlFor="name">Full name</label>
               <input
@@ -43,17 +69,8 @@ export default function RegisterPage() {
                 autoComplete="name"
                 minLength={2}
                 maxLength={50}
-                aria-invalid={Boolean(state.errors?.name)}
-                aria-describedby={
-                  state.errors?.name ? "name-error" : undefined
-                }
                 required
               />
-              {state.errors?.name && (
-                <p id="name-error" className="register-error">
-                  {state.errors.name[0]}
-                </p>
-              )}
             </div>
 
             <div className="register-field">
@@ -64,17 +81,8 @@ export default function RegisterPage() {
                 type="email"
                 placeholder="Enter your email"
                 autoComplete="email"
-                aria-invalid={Boolean(state.errors?.email)}
-                aria-describedby={
-                  state.errors?.email ? "email-error" : undefined
-                }
                 required
               />
-              {state.errors?.email && (
-                <p id="email-error" className="register-error">
-                  {state.errors.email[0]}
-                </p>
-              )}
             </div>
 
             <div className="register-field">
@@ -87,27 +95,17 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 minLength={8}
                 maxLength={72}
-                aria-invalid={Boolean(state.errors?.password)}
-                aria-describedby={
-                  state.errors?.password
-                    ? "password-error"
-                    : "password-hint"
-                }
+                aria-describedby="password-hint"
                 required
               />
               <span id="password-hint" className="register-hint">
                 Must be at least 8 characters.
               </span>
-              {state.errors?.password && (
-                <p id="password-error" className="register-error">
-                  {state.errors.password[0]}
-                </p>
-              )}
             </div>
 
-            {state.message && (
+            {error && (
               <p className="register-error" role="alert">
-                {state.message}
+                {error}
               </p>
             )}
 

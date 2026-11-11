@@ -1,6 +1,5 @@
 /**
- * MainHeader styles.
- * Includes navigation, active links and responsive layout.
+ * Responsive header with desktop navigation and mobile hamburger menu.
  */
 
 .mainHeader {
@@ -11,6 +10,8 @@
   padding: 0 6%;
   background-color: #faf9f6;
   border-bottom: 1px solid #eae8e2;
+  position: relative;
+  z-index: 20;
 }
 
 .logo {
@@ -19,6 +20,10 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-decoration: none;
+}
+
+.headerContent {
+  display: contents;
 }
 
 .navigation {
@@ -49,37 +54,128 @@
   gap: 24px;
 }
 
-.loginLink {
+.loginLink,
+.userGreeting {
   color: #55564f;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: color 0.3 ease;
+}
+
+.loginLink {
+  transition: color 0.2s ease;
 }
 
 .loginLink:hover {
   color: #a47752;
 }
 
-.signupButton {
+.signupButton,
+.logoutButton {
   padding: 11px 20px;
   color: #fff;
   background-color: #242520;
+  border: none;
   border-radius: 6px;
+  font-family: inherit;
   font-size: 0.9rem;
   text-decoration: none;
+  cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
-.signupButton:hover {
+.signupButton:hover,
+.logoutButton:hover {
   background-color: #a47752;
 }
 
-@media (max-width: 640px) {
+/* Hidden on desktop */
+.menuToggle {
+  display: none;
+}
+
+/* Mobile navigation */
+@media (max-width: 1024px) {
   .mainHeader {
+    min-height: 72px;
     padding: 0 5%;
   }
 
-  .navigation {
+  .menuToggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menuToggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #242520;
+    border-radius: 2px;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  /* Hamburger transforms into an X */
+  .menuToggle[aria-expanded="true"] span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menuToggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menuToggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .headerContent {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 24px 5% 28px;
+    background-color: #faf9f6;
+    border-bottom: 1px solid #eae8e2;
+    box-shadow: 0 12px 20px rgba(36, 37, 32, 0.06);
+  }
+
+  .headerContent.menuOpen {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .navLink {
+    font-size: 1rem;
+  }
+
+  .headerActions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid #eae8e2;
+  }
+
+  .signupButton,
+  .logoutButton {
+    text-align: center;
   }
 }
