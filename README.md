@@ -16,7 +16,7 @@ The application includes secure user authentication, protected routes, and a Pos
 
 ### Home Page
 
-![INKSPACE Home Page](./screenshots/home.png)
+![INKSPACE Home Page](./screenshots/Home.png)
 
 ### Explore Posts
 
