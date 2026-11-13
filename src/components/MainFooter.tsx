@@ -38,13 +38,6 @@ export default async function MainFooter() {
                         <Link href="/posts">Posts</Link>
                         <Link href="/about">About us</Link>
                     </nav>
-
-                    <div className="footerNavigation">
-                        <h2 className="footerHeading">Account</h2>
-
-                        <Link href="/login">Log in</Link>
-                        <Link href="/register">Get started</Link>
-                    </div>
                 </div>
 
                 <div className="footerBottom">
